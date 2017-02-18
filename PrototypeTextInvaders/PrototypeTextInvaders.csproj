@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Modules\RNGenerator.cs" />
-    <Compile Include="Modules\TextGameObject.cs" />
+    <Compile Include="Modules\LetterObject.cs" />
     <Compile Include="ScreenStates\SplashScreen.cs" />
     <Compile Include="TextInvaders.cs" />
     <Compile Include="Program.cs" />

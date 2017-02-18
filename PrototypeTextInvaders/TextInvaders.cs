@@ -1,4 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows;
+using System.IO;
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -17,16 +23,22 @@ namespace PrototypeTextInvaders
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        
         private const int SCREEN_WIDTH = 1024;
         private const int SCREEN_HEIGHT = 768;
 
+        private Rectangle _GameBounds = new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+       
         public TextInvaders()
         {
             //initialize graphics manager
             graphics = new GraphicsDeviceManager(this);
             //initialize Content Manager location at "Content" Folder
             Content.RootDirectory = "Content";
+
+            //Set window size
+            graphics.PreferredBackBufferWidth = SCREEN_WIDTH;
+            graphics.PreferredBackBufferHeight = SCREEN_HEIGHT;
         }
 
         /// <summary>
@@ -39,13 +51,17 @@ namespace PrototypeTextInvaders
         {
             // TODO: Add your initialization logic here
             this.Window.Title = "Prototype Text Invaders w/ C# & Monogame";
+            
 
             Components.Add(new ControlHandler(this));
             //Font Dictionary needs a rewrite as MonoGame throws a non-implemented exception
             //Components.Add(new FontDictionary(Content, this));
             Components.Add(new AudioManager(this, null));
-            Components.Add(new GameScreenManager(this, new SplashScreen()));
+
+            //Code below is for adding the initial Game State/Scene
+            Components.Add(new GameScreenManager(this, new SplashScreen(_GameBounds)));
             new GameScreens(this);
+
 
             base.Initialize();
         }
@@ -101,5 +117,9 @@ namespace PrototypeTextInvaders
             GameScreenManager.Instance.Draw(spriteBatch);
             base.Draw(gameTime);
         }
+
+        //Local Methods
+
+
     }
 }

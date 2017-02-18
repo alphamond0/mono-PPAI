@@ -28,17 +28,12 @@ namespace PrototypeTextInvaders.ScreenStates
     public class SplashScreen : GameScreens
     {
         #region Fields & Properties Region
-
         //This is needed for GameScreen State identification in GSM
-        const String ScreenName = "SplashScreen";
+        const String ScreenName = "CHANGE ME IMMEDIATELY";
+
+        //Place local variables here
 
         
-        private SpriteFont font;
-        
-        private float text = 1f;
-
-        LetterObject tgoTest = new LetterObject('A', new Vector2(10, 30), new Rectangle(10, 30, 1, 1), true);
-
         #endregion
 
         #region Constructor Region
@@ -46,16 +41,8 @@ namespace PrototypeTextInvaders.ScreenStates
         public SplashScreen()
             : base(ScreenName, new Rectangle(0,0,1024,768))
         {
-            // do any pre initialization code here  
-            // this is the default constructor          
-            
-        }
-
-        public SplashScreen(Rectangle gameBounds)
-            : base(ScreenName, gameBounds)
-        {
-            // do any pre initialization code here  
-            // this is the default constructor    
+            // do initializations during instancing object
+                        
         }
 
         #endregion
@@ -71,40 +58,33 @@ namespace PrototypeTextInvaders.ScreenStates
 
         public override void LoadContent(ContentManager Content)
         {
-            base.LoadContent(Content); //must give unique CM to base abstract class before loading any resource...
+            //must give unique CM to base abstract class before loading any resource...
+            base.LoadContent(Content);
 
             //TODO Load Content Resources here
-            font = Content.Load<SpriteFont>("Text");
-
-            tgoTest.LoadContent(Content);
+            
         }
 
         public override void UnloadContent()
         {            
             base.UnloadContent();
-
             
-            AudioManager.StopAll_Music();            
+            //Uncomment line below when already using AudioManager
+            //AudioManager.StopAll_Music();            
         }
 
 
         public override void Update(GameTime gameTime)
         {
-            
-            text = RNGenerator.GiveRandomFloat(1.0f,5.0f);
-
-            tgoTest.Update(gameTime);                            
+            //TODO Update Code here
+                                                  
         }
         
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
+            
             //TODO Draw your objects here
-            spriteBatch.DrawString(font, text.ToString(), new Vector2(100, 100), Color.Red);
-
-            tgoTest.Draw(spriteBatch);
-
-            spriteBatch.End();
+            
         }
 
         #endregion

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PrototypeTextInvaders.Modules
+namespace monoOPPAI_Engine.Utilities
 {    
     //Class to generate consistent, though not perfect, random integer/float numbers.
     class RNGenerator
@@ -30,7 +30,7 @@ namespace PrototypeTextInvaders.Modules
         {
             var buffer = new byte[4];
             _r.NextBytes(buffer);
-            return BitConverter.ToSingle(buffer, 0);            
+            return BitConverter.ToSingle(buffer, 0);
         }
 
         public static float GiveRandomFloat(float maxVal)
