@@ -41,9 +41,11 @@ namespace PrototypeTextInvaders
             this.Window.Title = "Prototype Text Invaders w/ C# & Monogame";
 
             Components.Add(new ControlHandler(this));
-            Components.Add(new FontDictionary(Content, this));
+            //Font Dictionary needs a rewrite as MonoGame throws a non-implemented exception
+            //Components.Add(new FontDictionary(Content, this));
             Components.Add(new AudioManager(this, null));
             Components.Add(new GameScreenManager(this, new SplashScreen()));
+            new GameScreens(this);
 
             base.Initialize();
         }
@@ -94,6 +96,9 @@ namespace PrototypeTextInvaders
 
             // TODO: Add your drawing code here
 
+
+            //GSM global instace needs to be drawn so all GS inheritors will appear on screen
+            GameScreenManager.Instance.Draw(spriteBatch);
             base.Draw(gameTime);
         }
     }

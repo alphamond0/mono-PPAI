@@ -48,6 +48,7 @@
     <Compile Include="ScreenStates\GameScreenManager.cs" />
     <Compile Include="ScreenStates\GameScreens.cs" />
     <Compile Include="TileEngineComponent\Camera2D.cs" />
+    <Compile Include="TileEngineComponent\RectangleHelper.cs" />
     <Compile Include="TileEngineComponent\TileEngineMap.cs" />
     <Compile Include="UserInput\ControlHandler.cs" />
     <Compile Include="UserInput\MenuItem.cs" />

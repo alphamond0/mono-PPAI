@@ -26,6 +26,8 @@ using monOPPAI_Engine.Content;
 using monOPPAI_Engine.ScreenStates;
 using monOPPAI_Engine.UserInput;
 
+using PrototypeTextInvaders.Modules;
+
 
 namespace PrototypeTextInvaders.ScreenStates
 {
@@ -33,36 +35,12 @@ namespace PrototypeTextInvaders.ScreenStates
     {
         #region Fields & Properties Region
 
-        const String ScreenName = "SplashScreen";      
+        //This is needed for GameScreen State identification in GSM
+        const String ScreenName = "SplashScreen";
 
-        //AnimatedSprite loading;
-        RunningText PromptUser;
-
-        Texture2D Girl404;
-        //Texture2D wPixl;
-        List<Texture2D> RandomSplashes;
-        int randomIntSplash;
-
-
-        //Texture2D splashScreenTextureSheet1;
-
-        //Flags
-        Boolean go4BGM;
-        //Flags
-
-        
-        //For faux pause:
-        float TimeVar, TimeDelay;
-        Boolean FlagForFaux;
-
-
-        //float _textureOpacity;
-        //float _textureOpacityIncValue;
-
-        String prompt1 = "Press Space To Continue...";
-        String powered = "Powered By:";
-
-        
+        private SpriteFont font;
+        //RNGenerator Foo = new RNGenerator();
+        private int text = RNGenerator.GiveRandom();
 
         #endregion
 
@@ -91,8 +69,9 @@ namespace PrototypeTextInvaders.ScreenStates
         public override void LoadContent(ContentManager Content)
         {
             base.LoadContent(Content); //must give unique CM to base abstract class before loading any resource...
-             
+
             //TODO Load Content Resources here
+            font = Content.Load<SpriteFont>("Text");
 
         }
 
@@ -101,35 +80,29 @@ namespace PrototypeTextInvaders.ScreenStates
             base.UnloadContent();
 
             
-            PromptUser = null;
             AudioManager.StopAll_Music();            
         }
 
-        int pauseFlag = -1;
 
         public override void Update(GameTime gameTime)
-        {            
+        {
             /*
             if (!go4BGM)
             {
                 AudioManager.Play_BGMusic("door-heartbeat");                
                 go4BGM = true;
             }
-            */                       
+            */
+            text = RNGenerator.GiveRandom();
             
         }
         
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            
-            PromptUser.Draw(spriteBatch);
-            
-           
+            //TODO Draw your objects here
+            spriteBatch.DrawString(font, text.ToString(), new Vector2(100, 100), Color.Red);
 
-            spriteBatch.DrawString(FontDictionary.getFont("[acknowTT20]"), powered, new Vector2(278,140), Color.White);
-
-            
             spriteBatch.End();
         }
 

@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2B5D2BCC-FE2B-4C7A-9165-812DBE38113A}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PrototypeTextInvaders</RootNamespace>
     <AssemblyName>PrototypeTextInvaders</AssemblyName>
@@ -37,7 +37,12 @@
   <PropertyGroup>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Modules\RNGenerator.cs" />
+    <Compile Include="Modules\TextGameObject.cs" />
     <Compile Include="ScreenStates\SplashScreen.cs" />
     <Compile Include="TextInvaders.cs" />
     <Compile Include="Program.cs" />
